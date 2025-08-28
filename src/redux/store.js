@@ -5,21 +5,22 @@ import storage from 'redux-persist/lib/storage'; // defaults to localStorage for
 import contactsReducer from '../redux/contactsSlice';
 import filtersReducer from '../redux/filtersSlice';
 
-const persistConfig = {
-  key: 'root',
+
+const contactsPersistConfig = {
+  key: 'contacts',
   storage,
+  whitelist: ['items'],
 };
 
+
 const rootReducer = combineReducers({
-  contacts: contactsReducer,
+  contacts: persistReducer(contactsPersistConfig, contactsReducer),
   filters: filtersReducer,
 });
 
-const persistedReducer = persistReducer(persistConfig, rootReducer);
-
 export const store = configureStore({
   devTools: import.meta.env.MODE !== 'production',
-  reducer: persistedReducer,
+  reducer: rootReducer,
   middleware: getDefaultMiddleware =>
     getDefaultMiddleware({
       serializableCheck: {
