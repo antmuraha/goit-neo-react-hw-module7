@@ -5,7 +5,7 @@ export const proxy = async (req, res) => {
     'Access-Control-Allow-Origin',
     process.env.NODE_ENV === 'production' ? 'https://goit-neo-react-hw-module7-phi-lime.vercel.app' : '*'
   );
-  res.set('Access-Control-Allow-Methods', 'GET, OPTIONS');
+  res.set('Access-Control-Allow-Methods', 'GET, POST, DELETE, OPTIONS');
   res.set('Access-Control-Allow-Headers', 'Content-Type');
   res.set('Accept-Version', 'v1');
 
