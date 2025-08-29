@@ -1,0 +1,7 @@
+local
+node_modules
+.git
+.nvmrc
+
+.env
+.env.example
